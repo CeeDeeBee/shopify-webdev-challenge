@@ -21,6 +21,14 @@ function App() {
 		setMovies([...movies, movie]);
 	};
 
+	const removeMovie = (imdbID) => {
+		setMovies(
+			movies.filter((movie) => {
+				if (movie.imdbID !== imdbID) return movie;
+			})
+		);
+	};
+
 	return (
 		<div className="App" onClick={handleClick}>
 			<Header />
@@ -29,7 +37,7 @@ function App() {
 				addMovie={addMovie}
 				movies={movies}
 			/>
-			<Nominations movies={movies} />
+			<Nominations movies={movies} removeMovie={removeMovie} />
 			<Footer />
 		</div>
 	);

@@ -3,7 +3,7 @@
 	width: 85%;
 	background-color: #004c3f;
 	color: white;
-	padding-left: 5%;
+	padding: 0 5%;
 	text-align: left;
 	flex-grow: 1;
 
@@ -14,14 +14,62 @@
 	}
 
 	.nomination-list {
-		.no-nominations-message {
-			h3 {
-				font-size: 1.3rem;
+		margin-bottom: 4%;
+		display: flex;
+		justify-content: space-around;
+		flex-wrap: wrap;
+
+		.nomination-item {
+			box-sizing: border-box;
+			width: 365px;
+			background-color: #fbf7ed;
+			padding: 2%;
+			border-radius: 10px;
+			margin: 2% 1%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			img {
+				height: 450px;
 			}
 
-			p {
-				font-size: 1.2rem;
+			.bottom-row {
+				padding-top: 6%;
+				width: 300px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-grow: 1;
+
+				h3 {
+					color: black;
+					font-size: 1.3rem;
+					margin: 0;
+				}
+
+				.remove-nomination {
+					display: flex;
+					align-items: center;
+					background: transparent;
+					border: none;
+
+					&:hover {
+						cursor: pointer;
+						fill: firebrick;
+					}
+				}
 			}
+		}
+	}
+
+	.no-nominations-message {
+		h3 {
+			font-size: 1.3rem;
+		}
+
+		p {
+			font-size: 1.2rem;
 		}
 	}
 }
