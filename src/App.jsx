@@ -17,10 +17,18 @@ function App() {
 		else setSearchFocused(false);
 	};
 
+	const addMovie = (movie) => {
+		setMovies([...movies, movie]);
+	};
+
 	return (
 		<div className="App" onClick={handleClick}>
 			<Header />
-			<Search searchFocused={searchFocused} />
+			<Search
+				searchFocused={searchFocused}
+				addMovie={addMovie}
+				movies={movies}
+			/>
 			<Nominations movies={movies} />
 			<Footer />
 		</div>
