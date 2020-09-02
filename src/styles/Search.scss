@@ -1,9 +1,24 @@
 .search-wrapper {
-	width: 60%;
-	padding: 5%;
+	box-sizing: border-box;
+	width: 85%;
+	height: 17vh;
+	padding: 0% 5%;
+	background-color: #fbf7ed;
+	display: flex;
+	// justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	h2 {
+		width: 90%;
+		text-align: left;
+		font-size: 1.5rem;
+		color: #004c3f;
+		font-weight: bold;
+	}
 
 	input {
-		width: 100%;
+		width: 90%;
 		height: 40px;
 		padding: 1%;
 		font-size: 1.3rem;

@@ -1,0 +1,22 @@
+footer {
+	box-sizing: border-box;
+	width: 85%;
+	background-color: #fbf7ed;
+	font-weight: bold;
+	padding: 0% 5%;
+
+	h4 {
+		font-size: 1.2rem;
+	}
+
+	.footer-links {
+		font-size: 1rem;
+		display: flex;
+		justify-content: space-around;
+		padding: 0 0 2%;
+
+		a {
+			color: black;
+		}
+	}
+}

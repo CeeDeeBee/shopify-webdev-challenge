@@ -111,6 +111,7 @@ const Search = ({ searchFocused }) => {
 
 	return (
 		<div className="search-wrapper">
+			<h2>Search Movies</h2>
 			<input type="text" className="search" onChange={handleSearch} />
 			<SearchDropdown
 				searchResults={searchResults}

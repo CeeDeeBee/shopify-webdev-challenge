@@ -1,0 +1,27 @@
+.nominations-wrapper {
+	box-sizing: border-box;
+	width: 85%;
+	background-color: #004c3f;
+	color: white;
+	padding-left: 5%;
+	text-align: left;
+	flex-grow: 1;
+
+	h2 {
+		font-size: 1.5rem;
+		padding-top: 1%;
+		padding-bottom: 1%;
+	}
+
+	.nomination-list {
+		.no-nominations-message {
+			h3 {
+				font-size: 1.3rem;
+			}
+
+			p {
+				font-size: 1.2rem;
+			}
+		}
+	}
+}
