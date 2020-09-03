@@ -38,6 +38,10 @@ const Nominations = ({ movies, removeMovie }) => {
 				<div className="no-nominations-message">
 					<h3>You haven't selected any movies</h3>
 					<p>
+						Please choose your five favorite films that you feel should be up
+						for nomination
+					</p>
+					<p>
 						Search for movies in the bar above and pick from the dropdown to add
 						to your nominations
 					</p>

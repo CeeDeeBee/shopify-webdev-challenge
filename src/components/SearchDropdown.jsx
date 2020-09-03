@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import "../styles/SearchDropdown.scss";
 
 const SearchDropdown = ({ searchResults, searchFocused, addMovie, movies }) => {
+	const [movieIDs, setMovieIDs] = useState([]);
+
+	useEffect(() => {
+		setMovieIDs(movies.map((movie) => movie.imdbID));
+	}, [movies]);
+
 	return (
 		searchResults.length > 0 &&
 		searchFocused && (
@@ -15,7 +21,7 @@ const SearchDropdown = ({ searchResults, searchFocused, addMovie, movies }) => {
 						</p>
 						<button
 							className="nominate-button"
-							disabled={movies.includes(result)}
+							disabled={movieIDs.includes(result.imdbID) || movies.length >= 5}
 							onClick={() => addMovie(result)}
 						>
 							<svg

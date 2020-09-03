@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import Banner from "./components/Banner";
 import Header from "./components/Header";
 import Search from "./components/Search";
 import Nominations from "./components/Nominations";
@@ -18,7 +19,7 @@ function App() {
 	};
 
 	const addMovie = (movie) => {
-		setMovies([...movies, movie]);
+		setMovies([movie, ...movies]);
 	};
 
 	const removeMovie = (imdbID) => {
@@ -31,6 +32,7 @@ function App() {
 
 	return (
 		<div className="App" onClick={handleClick}>
+			<Banner movies={movies} />
 			<Header />
 			<Search
 				searchFocused={searchFocused}

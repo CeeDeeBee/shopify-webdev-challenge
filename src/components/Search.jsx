@@ -118,6 +118,7 @@ const Search = ({ searchFocused, addMovie, movies }) => {
 	const clearSearchInput = () => {
 		setSearchInput("");
 		setClearDisplayStatus("none");
+		setSearchResults([]);
 	};
 
 	return (
