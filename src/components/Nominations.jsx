@@ -3,7 +3,6 @@ import React from "react";
 import "../styles/Nominations.scss";
 
 const Nominations = ({ movies, removeMovie }) => {
-	console.log(movies);
 	return (
 		<div className="nominations-wrapper">
 			<h2>Selected Nominations</h2>
