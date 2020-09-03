@@ -23,11 +23,7 @@ function App() {
 	};
 
 	const removeMovie = (imdbID) => {
-		setMovies(
-			movies.filter((movie) => {
-				if (movie.imdbID !== imdbID) return movie;
-			})
-		);
+		setMovies(movies.filter((movie) => movie.imdbID !== imdbID));
 	};
 
 	return (

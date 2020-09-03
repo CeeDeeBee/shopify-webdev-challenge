@@ -16,8 +16,29 @@ const Search = ({ searchFocused, addMovie, movies }) => {
 	// this useEffect will only send an API request half a second after the user has stopped typing
 	// this reduces calls as otherwise there would be one call for every character typed
 	useEffect(() => {
+		// function to make API call
+		const callOMDBAPI = () => {
+			axios
+				.get(
+					"http://www.omdbapi.com/?type=movie&r=json" +
+						`&apikey=${process.env.REACT_APP_OMDB_KEY}` +
+						`&s=${searchInput}`
+				)
+				.then((res) => {
+					if (res.data.Response === "True") {
+						setSearchError(null);
+						setSearchResults(res.data.Search);
+					} else {
+						setSearchError(`Error: ${res.data.Error}`);
+					}
+				})
+				.catch((err) => {
+					setSearchError(`Error: ${err.response}`);
+				});
+		};
+
+		// handle search input
 		if (searchInput !== "") {
-			if (setSearchTimeout !== null) clearTimeout(searchTimeout);
 			const timeout = setTimeout(() => {
 				callOMDBAPI();
 			}, 500);
@@ -28,6 +49,8 @@ const Search = ({ searchFocused, addMovie, movies }) => {
 
 	const handleSearch = (e) => {
 		setSearchInput(e.target.value);
+		// if there is one, clear the API call timeout whenever the use changes the search
+		if (setSearchTimeout !== null) clearTimeout(searchTimeout);
 		if (e.target.value === "") {
 			setSearchResults([]);
 			setClearDisplayStatus("none");
@@ -35,26 +58,6 @@ const Search = ({ searchFocused, addMovie, movies }) => {
 		} else {
 			setClearDisplayStatus("block");
 		}
-	};
-
-	const callOMDBAPI = () => {
-		axios
-			.get(
-				"http://www.omdbapi.com/?type=movie&r=json" +
-					`&apikey=${process.env.REACT_APP_OMDB_KEY}` +
-					`&s=${searchInput}`
-			)
-			.then((res) => {
-				if (res.data.Response === "True") {
-					setSearchError(null);
-					setSearchResults(res.data.Search);
-				} else {
-					setSearchError(`Error: ${res.data.Error}`);
-				}
-			})
-			.catch((err) => {
-				setSearchError(`Error: ${err.response}`);
-			});
 	};
 
 	const clearSearchInput = () => {
