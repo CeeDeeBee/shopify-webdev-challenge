@@ -20,7 +20,7 @@ const Search = ({ searchFocused, addMovie, movies }) => {
 		const callOMDBAPI = () => {
 			axios
 				.get(
-					"http://www.omdbapi.com/?type=movie&r=json" +
+					"https://www.omdbapi.com/?type=movie&r=json" +
 						`&apikey=${process.env.REACT_APP_OMDB_KEY}` +
 						`&s=${searchInput}`
 				)
