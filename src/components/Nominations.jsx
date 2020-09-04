@@ -1,11 +1,16 @@
 import React from "react";
 
+import ShareButton from "./ShareButton";
+
 import "../styles/Nominations.scss";
 
 const Nominations = ({ movies, removeMovie }) => {
 	return (
 		<div className="nominations-wrapper">
-			<h2>Selected Nominations</h2>
+			<div className="nominations-top-row">
+				<h2>Selected Nominations</h2>
+				<ShareButton movies={movies} />
+			</div>
 			{/* display an onboarding message if no movies are in state */}
 			{movies.length > 0 ? (
 				<div className="nomination-list">

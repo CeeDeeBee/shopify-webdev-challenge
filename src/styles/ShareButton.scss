@@ -1,0 +1,13 @@
+.share-button {
+	height: 40px;
+	padding: 8px auto;
+
+	&:hover:not(:disabled) {
+		cursor: pointer;
+	}
+
+	&:disabled {
+		background-color: lightgray;
+		fill: gray;
+	}
+}

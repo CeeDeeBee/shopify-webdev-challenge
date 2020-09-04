@@ -1,0 +1,44 @@
+.share-modal-bg {
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(128, 128, 128, 0.4);
+	z-index: 2;
+	position: fixed;
+	top: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.share-modal {
+		background-color: white;
+		color: black;
+		z-index: 3;
+		padding: 2% 5%;
+		border-radius: 10px;
+		text-align: center;
+		position: relative;
+
+		p {
+			font-size: 1.2rem;
+		}
+
+		.share-modal-close {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			z-index: 1;
+			background-color: transparent;
+			border: none;
+
+			&:hover {
+				cursor: pointer;
+			}
+
+			svg {
+				transform: scale(0.6);
+				z-index: -1;
+			}
+		}
+	}
+}

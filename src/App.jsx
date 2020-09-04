@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import Banner from "./components/Banner";
@@ -12,6 +12,13 @@ import "./styles/App.scss";
 function App() {
 	const [movies, setMovies] = useLocalStorage("nominatedMovies", []);
 	const [searchFocused, setSearchFocused] = useState(false);
+
+	// load in movies from share link
+	useEffect(() => {
+		const query = new URLSearchParams(window.location.search);
+		const sharedMovies = query.get("share");
+		if (sharedMovies) setMovies(JSON.parse(atob(sharedMovies)));
+	}, []);
 
 	// used to determine if user has searchbar focused in order to toggle search dropdown
 	const handleClick = () => {
