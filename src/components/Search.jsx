@@ -7,14 +7,16 @@ import "../styles/Search.scss";
 
 const Search = ({ searchFocused, addMovie, movies }) => {
 	const [searchResults, setSearchResults] = useState([]);
-	const [clearDisplayStatus, setClearDisplayStatus] = useState("none");
+	const [clearSearchDisplayStatus, setClearSearchDisplayStatus] = useState(
+		"none"
+	);
 	const [searchInput, setSearchInput] = useState("");
 	const [searchTimeout, setSearchTimeout] = useState(null);
 	const [searchError, setSearchError] = useState(null);
 	const searchInputRef = useRef(null);
 
 	// this useEffect will only send an API request half a second after the user has stopped typing
-	// this reduces calls as otherwise there would be one call for every character typed
+	// used in order to reduce API calls
 	useEffect(() => {
 		// function to make API call
 		const callOMDBAPI = () => {
@@ -33,11 +35,16 @@ const Search = ({ searchFocused, addMovie, movies }) => {
 					}
 				})
 				.catch((err) => {
-					setSearchError(`Error: ${err.response}`);
+					console.log(err);
+					if (err.response) {
+						setSearchError(`Error: ${err.response}`);
+					} else if (err.message) {
+						setSearchError(`Error: ${err.message}`);
+					}
 				});
 		};
 
-		// handle search input
+		// handle timeouts for API calls
 		if (searchInput !== "") {
 			const timeout = setTimeout(() => {
 				callOMDBAPI();
@@ -49,20 +56,20 @@ const Search = ({ searchFocused, addMovie, movies }) => {
 
 	const handleSearch = (e) => {
 		setSearchInput(e.target.value);
-		// if there is one, clear the API call timeout whenever the use changes the search
+		// if there is one, cancel the waiting API call whenever the user changes the search
 		if (setSearchTimeout !== null) clearTimeout(searchTimeout);
 		if (e.target.value === "") {
 			setSearchResults([]);
-			setClearDisplayStatus("none");
+			setClearSearchDisplayStatus("none");
 			setSearchError(null);
 		} else {
-			setClearDisplayStatus("block");
+			setClearSearchDisplayStatus("block");
 		}
 	};
 
 	const clearSearchInput = () => {
 		setSearchInput("");
-		setClearDisplayStatus("none");
+		setClearSearchDisplayStatus("none");
 		setSearchResults([]);
 		setSearchError(null);
 	};
@@ -99,14 +106,14 @@ const Search = ({ searchFocused, addMovie, movies }) => {
 				<button
 					className="clear"
 					onClick={clearSearchInput}
-					disabled={clearDisplayStatus === "none" ? true : false}
+					disabled={clearSearchDisplayStatus === "none" ? true : false}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="24"
 						height="24"
 						viewBox="0 0 24 24"
-						display={clearDisplayStatus}
+						display={clearSearchDisplayStatus}
 					>
 						<path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
 					</svg>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { useLocalStorage } from "./hooks/useLocalStorage";
 import Banner from "./components/Banner";
 import Header from "./components/Header";
 import Search from "./components/Search";
@@ -9,7 +10,7 @@ import Footer from "./components/Footer";
 import "./styles/App.scss";
 
 function App() {
-	const [movies, setMovies] = useState([]);
+	const [movies, setMovies] = useLocalStorage("nominatedMovies", []);
 	const [searchFocused, setSearchFocused] = useState(false);
 
 	// used to determine if user has searchbar focused in order to toggle search dropdown
