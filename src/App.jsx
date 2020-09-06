@@ -11,14 +11,16 @@ import "./styles/App.scss";
 
 function App() {
 	const [movies, setMovies] = useLocalStorage("nominatedMovies", []);
+	// separate state in order to not overwrite nominations saved in localstorage
+	const [sharedMovies, setSharedMovies] = useState([]);
 	const [searchFocused, setSearchFocused] = useState(false);
 
 	// load in movies from share link
 	useEffect(() => {
 		const query = new URLSearchParams(window.location.search);
-		const sharedMovies = query.get("share");
-		if (sharedMovies) setMovies(JSON.parse(atob(sharedMovies)));
-	}, []);
+		const sharedMoviesRaw = query.get("share");
+		if (sharedMoviesRaw) setSharedMovies(JSON.parse(atob(sharedMoviesRaw)));
+	}, [setSharedMovies]);
 
 	// used to determine if user has searchbar focused in order to toggle search dropdown
 	const handleClick = () => {
@@ -43,7 +45,11 @@ function App() {
 				addMovie={addMovie}
 				movies={movies}
 			/>
-			<Nominations movies={movies} removeMovie={removeMovie} />
+			<Nominations
+				// display shared movies if there are any, default to localstorage if not
+				movies={sharedMovies.length > 0 ? sharedMovies : movies}
+				removeMovie={removeMovie}
+			/>
 			<Footer />
 		</div>
 	);
