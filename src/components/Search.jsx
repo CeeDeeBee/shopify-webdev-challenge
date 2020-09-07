@@ -16,7 +16,7 @@ const Search = ({ searchFocused, addMovie, movies }) => {
 	const searchInputRef = useRef(null);
 
 	// this useEffect will only send an API request half a second after the user has stopped typing
-	// used in order to reduce API calls
+	// in order to reduce API calls
 	useEffect(() => {
 		// function to make API call
 		const callOMDBAPI = () => {

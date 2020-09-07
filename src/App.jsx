@@ -46,7 +46,7 @@ function App() {
 				movies={movies}
 			/>
 			<Nominations
-				// display shared movies if there are any, default to localstorage if not
+				// display shared movies if there are any, default to localstorage otherwise
 				movies={sharedMovies.length > 0 ? sharedMovies : movies}
 				removeMovie={removeMovie}
 			/>
