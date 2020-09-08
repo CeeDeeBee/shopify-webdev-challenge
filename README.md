@@ -26,3 +26,4 @@ Deployed at https://happy-neumann-c400ec.netlify.app/
 - Fix bug where user can double add shared movies to nominations
 - Work with a designer to improve UX/UI
 - Add additional animations for state changes
+- Improve responsiveness at mobile screen sizes
