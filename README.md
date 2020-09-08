@@ -10,6 +10,7 @@ Deployed at https://happy-neumann-c400ec.netlify.app/
 - Persist nominations locally across page loads
 - Banner display when the user has reached five nominations
 - Sharable nominations using a custom link
+- Custom design inspired by the Shopify.com home page
 
 ## Stack
 
@@ -23,3 +24,5 @@ Deployed at https://happy-neumann-c400ec.netlify.app/
 
 - Add share to social network function
 - Fix bug where user can double add shared movies to nominations
+- Work with a designer to improve UX/UI
+- Add additional animations for state changes
